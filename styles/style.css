@@ -19,3 +19,6 @@
 .carte{
     background-color: rgba(164, 253, 219, 0.753) !important;
 }
+.box{
+    width: 65%;
+}

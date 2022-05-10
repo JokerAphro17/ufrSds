@@ -11,17 +11,16 @@
 </head>
 <body class="">
 <section class="vh-100 inscription" >
-  <div class="container h-20">
+  <div class="box h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-12 col-xl-11">
         <div class="card text-black carte" style="border-radius: 25px;">
-        <h1 class="card-title text-center">GESTIONNAIRE UFR/SDS</h1>
-
-          <div class="card-body p-md-5">
+        <h1 class=" text-center">                <img src="assets/img/logo.png" alt="logo" class="img-fluid  align-item-center" style="height:5rem">
+GESTIONNAIRE UFR/SDS</h1>
+          <div class="card-body ">
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                <img src="assets/img/logo.jpg" alt="logo" class="img-fluid mb-4 align-item-center">
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">INSCRIPTION</p>
+                <p class="text-center h1 fw-bold  mx-1 mx-md-4 mt-4">INSCRIPTION</p>
 
                 <form class="mx-1 mx-md-4">
 
