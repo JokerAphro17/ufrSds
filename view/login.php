@@ -40,7 +40,7 @@ GESTIONNAIRE UFR/SDS</h1>
                     </div>
                   </div>
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" class="btn btn-primary btn-lg">S'inscrire</button>
+                    <button type="button" class="btn btn-primary btn-lg">Se connecter</button>
                   </div>
 
                 </form>
