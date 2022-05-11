@@ -6,213 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/style.css" />
     <link rel="stylesheet" href="../assets/bootstrap5/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
     <script src="../assets/bootstrap5/js/bootstrap.min.js" defer></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <title>Gestionnaire UFR/SDS</title>
   </head>
-  <body class="liste container">
-    <nav class="navbar navbar-light p-0 row">
-      <div class="col-12">
-        <a class="navbar-brand" href="#">
-          <h1
-            class="text-center text-success bg-light"
-            style="font-size: 3.5rem"
-          >
-            <img
-              src="../assets/img/logo.png"
-              alt=""
-              style="height: 5rem"
-              class="d-inline-block align-text-top me-5"
-            />Gestionnaire UFR/SDS
-          </h1>
-        </a>
-      </div>
-    </nav>
-    <div class="row justify-content-evenly d-flex p-1">
-      <div class="col-3">
-        <a class="btn btn-primary disabled">Ajouter un Etudiant</a>
-      </div>
-      <div class="col-3">
-        <a class="btn-primary btn">Liste des Etudiant</a>
-      </div>
-    </div>
-    <div class="">
-      <div class="row d-flex">
-        <form
-          action="../controller/liste.php"
-          method="POST"
-          class="d-flex form justify-content-center"
-        >
-          <div class="col-6 " >
-            <h3 class="text-center"> INFO ETUDIANT</h3>
-            <div class="form-group">
-              <input
-                type="text"
-                class="form-control"
-                id="nom"
-                name="nom"
-                placeholder="Nom"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="text mt-2"
-                class="form-control"
-                id="prenom"
-                name="prenom"
-                placeholder="Prenom"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="date"
-                class="form-control"
-                id="ddn"
-                name="ddn"
-                placeholder="Date de Naissance"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                placeholder="Email"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="tel"
-                class="form-control"
-                id="tel"
-                name="tel"
-                placeholder="Telephone"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="text"
-                class="form-control"
-                id="adresse"
-                name="adresse"
-                placeholder="Adresse"
-              />
-            </div>
-            <div class="form-group d-flex">
-              <label for="sexe" class="ms-3">Tuteur </label>
-              <div class="form-check">
-                <input
-                  class="form-check-input ms-3"
-                  type="radio"
-                  name="tuteur"
-                  id="tuteur"
-                  value="oui"
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop"
-                />
-              </div>
-              <label class="form-check-label" for="tuteur"> oui </label>
-
-              <div class="form-check">
-                <input
-                  class="form-check-input ms-3"
-                  type="radio"
-                  name="tuteur"
-                  id="tuteur"
-                  value="non"
-                />
-                <label class="form-check-label" for="sexe"> non </label>
-              </div>
-            </div>
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="nom"
-                          name="nom"
-                          placeholder="Nom"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="prenom"
-                          name="prenom"
-                          placeholder="Prenom"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="tel"
-                          class="form-control"
-                          id="tel"
-                          name="tel"
-                          placeholder="Telephone"
-                        />
-                      </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-primary">Enregistré</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button
-              type="submit"
-              class="btn btn-primary justify-content-center"
-            >
-              Envoyer
-            </button>
-          </div>
-          </form> 
-        </div>
-      </div>
-    </div>
-    
+  <body>
+    <table
+      id="dtBasicExample"
+      class="table table-striped table-bordered table-sm"
+      cellspacing="0"
+      width="100%"
+    >
+      <thead>
+        <tr>
+          <th class="th-sm">Name</th>
+          <th class="th-sm">Position</th>
+          <th class="th-sm">Office</th>
+          <th class="th-sm">Age</th>
+          <th class="th-sm">Start date</th>
+          <th class="th-sm">Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tiger Nixon</td>
+          <td>System Architect</td>
+          <td>Edinburgh</td>
+          <td>61</td>
+          <td>2011/04/25</td>
+          <td>$320,800</td>
+        </tr>
+        <tr>
+          <td>Garrett Winters</td>
+          <td>Accountant</td>
+          <td>Tokyo</td>
+          <td>63</td>
+          <td>2011/07/25</td>
+          <td>$170,750</td>
+        </tr>
+        <tr>
+          <td>Ashton Cox</td>
+          <td>Junior Technical Author</td>
+          <td>San Francisco</td>
+          <td>66</td>
+          <td>2009/01/12</td>
+          <td>$86,000</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Office</th>
+          <th>Age</th>
+          <th>Start date</th>
+          <th>Salary</th>
+        </tr>
+      </tfoot>
+    </table>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </body>
-  <script>
-    $( function() {
-      var availableTags = [
-        "ActionScript",
-        "AppleScript",
-        "Asp",
-        "BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "Java",
-        "JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme"
-      ];
-      $( "#tags" ).autocomplete({
-        source: availableTags
-      });
-    } );
-    </script>
 </html>

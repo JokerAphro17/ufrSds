@@ -10,44 +10,52 @@
     <title>Gestionnaire UFR/SDS </title>
 </head>
 <body class="">
-<section class="vh-100 inscription" >
-  <div class="box h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-lg-12 col-xl-11">
-        <div class="card text-black carte" style="border-radius: 25px;">
-        <h1 class=" text-center"><img src="../assets/img/logo.png" alt="logo" class="img-fluid  align-item-center" style="height:5rem">
-GESTIONNAIRE UFR/SDS</h1>
-          <div class="card-body ">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                <p class="text-center h1 fw-bold  mx-1 mx-md-4 mt-4">CONNEXION</p>
+<nav class="navbar row">
+      <div class="col-12">
+        <a class="navbar-brand" href="#">
+          <h1
+            class="text-center text-success bg-light"
+            style="font-size: 3.5rem"
+          >
+            <img
+              src="assets/img/logo.png"
+              alt=""
+              style="height: 5rem"
+              class="d-inline-block align-text-top "
+            />Gestionnaire UFR/SDS
+          </h1>
+        </a>
+      </div>
+    </nav>
+<section class="vh-100 ">
+  <div class="container  h-100">
+    <div class="row d-flex justify-content-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-success text-white" style="border-radius: 1rem;">
+          <div class="card-body  text-center">
 
-                <form class="mx-1 mx-md-4">
+            <div class=" ">
 
-                  <div class="d-flex flex-row align-items-center ">
-                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" class="form-control" />
-                      <label class="form-label" for="form3Example1c">Email</label>
-                    </div>
-                  </div>
+              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <p class="text-white-50 ">Please enter your login and password!</p>
 
-                  <div class="d-flex flex-row align-items-center ">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example3c" class="form-control" />
-                      <label class="form-label" for="form3Example3c">Mot de passe</label>
-                    </div>
-                  </div>
-                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" class="btn btn-primary btn-lg">Se connecter</button>
-                  </div>
-
-                </form>
-
+              <div class="form-outline form-white ">
+                <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                <label class="form-label" for="typeEmailX">Email</label>
               </div>
-              
+
+              <div class="form-outline form-white ">
+                <input type="password" id="typePasswordX" class="form-control form-control-lg mt-3" />
+                <label class="form-label" for="typePasswordX">Password</label>
+              </div>
+
+
+              <button class="btn btn-outline-light btn-lg " type="submit">Login</button>
+
+        
+
             </div>
+
           </div>
         </div>
       </div>

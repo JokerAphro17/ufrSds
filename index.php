@@ -10,14 +10,23 @@
     <title>Gestionnaire UFR/SDS </title>
 </head>
 <body class="">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <h1 class="justify-content-center"><img src="assets/img/logo.png" alt="logo" class="img-fluid  align-item-center" style="height:5rem">
-    <a class="navbar-brand" href="#">Gestionnaire UFR/SDS</a></h1>
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  </nav>
+<nav class="navbar  p-0 row">
+      <div class="col-12">
+        <a class="navbar-brand" href="#">
+          <h1
+            class="text-center text-success bg-light"
+            style="font-size: 3.5rem"
+          >
+            <img
+              src="assets/img/logo.png"
+              alt=""
+              style="height: 5rem"
+              class="d-inline-block align-text-top me-5"
+            />Gestionnaire UFR/SDS
+          </h1>
+        </a>
+      </div>
+    </nav>
 <section class="vh-80 bg-image">
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
