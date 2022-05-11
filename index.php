@@ -10,60 +10,53 @@
     <title>Gestionnaire UFR/SDS </title>
 </head>
 <body class="">
-<section class="vh-100 inscription" >
-  <div class="box h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-lg-12 col-xl-11">
-        <div class="card text-black carte" style="border-radius: 25px;">
-        <h1 class=" text-center">                <img src="assets/img/logo.png" alt="logo" class="img-fluid  align-item-center" style="height:5rem">
-GESTIONNAIRE UFR/SDS</h1>
-          <div class="card-body ">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                <p class="text-center h1 fw-bold  mx-1 mx-md-4 mt-4">INSCRIPTION</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <h1 class="justify-content-center"><img src="assets/img/logo.png" alt="logo" class="img-fluid  align-item-center" style="height:5rem">
+    <a class="navbar-brand" href="#">Gestionnaire UFR/SDS</a></h1>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  </nav>
+<section class="vh-80 bg-image">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-2">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                <form class="mx-1 mx-md-4">
+              <form>
 
-                  <div class="d-flex flex-row align-items-center ">
-                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" class="form-control" />
-                      <label class="form-label" for="form3Example1c">Nom complet</label>
-                    </div>
-                  </div>
+                <div class="form-outline mb-1">
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example1cg">Your Name</label>
+                </div>
 
-                  <div class="d-flex flex-row align-items-center ">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="email" id="form3Example3c" class="form-control" />
-                      <label class="form-label" for="form3Example3c">Email</label>
-                    </div>
-                  </div>
+                <div class="form-outline mb-1">
+                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example3cg">Your Email</label>
+                </div>
 
-                  <div class="d-flex flex-row align-items-center ">
-                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4c" class="form-control" />
-                      <label class="form-label" for="form3Example4c">Mot de password</label>
-                    </div>
-                  </div>
+                <div class="form-outline mb-1">
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cg">Password</label>
+                </div>
 
-                  <div class="d-flex flex-row align-items-center ">
-                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4cd" class="form-control" />
-                      <label class="form-label" for="form3Example4cd">Repeter le mot de passe</label>
-                    </div>
-                  </div>
+                <div class="form-outline mb-1">
+                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                </div>
 
-                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" class="btn btn-primary btn-lg">S'inscrire</button>
-                  </div>
 
-                </form>
+                <div class="d-flex justify-content-center">
+                  <button type="button"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                </div>
 
-              </div>
-            
+              </form>
+
             </div>
           </div>
         </div>
