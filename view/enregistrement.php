@@ -54,10 +54,11 @@
           <a class="btn btn-primary" href="Liste.php">LISTE</a>
         </div>
       </div>
-      <form action="../controller/inscription.php" method="POST">
+      <form action="../Controller/inscripEtudiant.php" method="POST">
         <div class="form-group mt-2">
           <input
             type="text"
+            require
             class="form-control"
             name="nom"
             id="exampleInputEmail1"
@@ -65,10 +66,10 @@
             placeholder="Nom"
           />
         </div>
-
         <div class="form-group mt-2">
           <input
             type="text"
+            require
             class="form-control"
             name="prenom"
             id="exampleInputEmail1"
@@ -79,6 +80,7 @@
         <div class="form-group mt-2">
           <input
             type="date"
+            require
             class="form-control"
             name="ddn"
             id="exampleInputEmail1"
@@ -89,6 +91,7 @@
         <div class="form-group mt-2">
           <input
             type="email"
+            require
             class="form-control"
             name="email"
             id="exampleInputEmail1"
@@ -113,8 +116,9 @@
             <input
               class="form-check-input"
               type="radio"
-              name="radio"
+              name="tuteur"
               id="radio1"
+              value="oui"
             />
             <label class="form-check-label" for="flexRadioDefault1 ">
               oui
@@ -124,8 +128,9 @@
             <input
               class="form-check-input"
               type="radio"
-              name="radio"
+              name="tuteur"
               id="radio2"
+              value="non"
               checked
             />
             <label class="form-check-label" for="flexRadioDefault2">
@@ -146,7 +151,7 @@
               type="text "
               class="form-control"
               id="tags"
-              name="recherche le tuteur"
+              name="recherche"
               aria-describedby="emailHelp"
               placeholder="Entrer le nom du tuteur"
             />
@@ -162,6 +167,12 @@
             </div>
           </div>
         </div>
+        <?php 
+        if(isset($_GET['erreur'])){
+          echo '<div class="alert alert-danger">'.$_GET['erreur'].'</div>';
+        }
+        ?>
+      
         <div class="row justify-content-center">
           <div class="col-3">
             <button class="btn btn-primary">Enregistrer</button>
@@ -236,11 +247,12 @@
                   type="button"
                   class="btn btn-danger"
                   data-bs-dismiss="modal"
+                  
                 >
                   Fermer
                 </button>
-                <button type="button" class="btn btn-success">
-                  Enregistrer
+                <button type="button" data-bs-dismiss="modal" class="btn btn-success">
+                  Enregistrer 
                 </button>
               </div>
             </div>

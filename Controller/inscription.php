@@ -18,7 +18,7 @@ if($_POST['nom'] != '' && $_POST['email'] != '' && $_POST['password'] != '' && $
                 'password' => md5($_POST['password'])
             ));
             $reuissie = 'Inscription réussie';
-            header('Location: ../view/enregistrement.php?success='.$reuissie);
+            header('Location: ../view/login.php?success='.$reuissie);
         }
     }else{
         $mot_de_passe_different = 'Les mots de passe ne sont pas identiques';
