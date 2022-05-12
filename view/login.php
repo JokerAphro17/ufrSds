@@ -34,27 +34,33 @@
         <div class="card bg-success text-white" style="border-radius: 1rem;">
           <div class="card-body  text-center">
 
-            <div class=" ">
+            <form action ="../Controller/authen.php" method="post">
 
-              <h2 class="fw-bold mb-2 text-uppercase">Connxion</h2>
+              <h2 class="fw-bold mb-2 text-uppercase">Connexion</h2>
               <p class="text-white-50 ">Entrer votre Email et votre mot de passe </p>
 
               <div class="form-outline form-white ">
-                <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                <label class="form-label" for="typeEmailX">Email</label>
+                <input type="email" name="email" id="typeEmailX" class="form-control form-control-lg" />
+                <label class="form-label" name ="email" for="typeEmailX">Email</label>
               </div>
 
               <div class="form-outline form-white ">
-                <input type="password" id="typePasswordX" class="form-control form-control-lg mt-3" />
+                <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg mt-3" />
                 <label class="form-label" for="typePasswordX">Mot de passe</label>
               </div>
 
-
+                <?php 
+                  if(isset($_GET['error'])){
+                    echo '<div class="alert alert-danger" role="alert">
+                      <strong>Erreur!</strong>'.$_GET['error'].'
+                    </div>';
+                  }
+                ?>
               <button class="btn btn-outline-light btn-lg " type="submit">Connecter-vous?</button>
 
         
 
-            </div>
+            </form>
 
           </div>
         </div>

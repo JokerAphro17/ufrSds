@@ -37,33 +37,38 @@
             <div class="card-body p-2">
               <h2 class="text-uppercase text-center mb-5">Creer un compte </h2>
 
-              <form>
+              <form action="Controller/inscription.php" method="post">
 
                 <div class="form-outline mb-1">
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg"
+                  <input type="text" id="form3Example1cg" name="nom" class="form-control form-control-lg"
                   placeholder="Nom" />
                 
                 </div>
 
                 <div class="form-outline mb-1">
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" 
+                  <input type="email" id="form3Example3cg" name="email" class="form-control form-control-lg" 
                   placeholder="Email" />
                 
                 </div>
 
                 <div class="form-outline mb-1">
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg"
+                  <input type="password" name="password" id="form3Example4cg" class="form-control form-control-lg"
                   placeholder="mot de passe" />
                 </div>
 
                 <div class="form-outline mb-1">
-                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" 
+                  <input type="password" id="form3Example4cdg" name="password2" class="form-control form-control-lg" 
                   placeholder="repeter le mot de passe"/>
                 </div>
 
-
+              <?php
+                if(isset($_GET['error'])){
+                  echo '<div class="alert alert-danger" role="alert">
+                  <strong>Erreur!</strong> '.$_GET['error'].'
+                  </div>';}
+              ?>
                 <div class="d-flex justify-content-center">
-                  <button type="button"
+                  <button type="submit"
                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-light">Enregistrer</button>
                 </div>
 
