@@ -42,9 +42,9 @@
         <h1>Liste des Etudiants</h1>
       </div>
       <div class="col-md-2">
-        <button class="btn btn-primary">
+        <a class="btn btn-primary" href="inscription.html">
           <i class="fas fa-plus"></i> Ajouter
-        </button>
+        </a>
       </div>
     </div>
     <table
@@ -71,9 +71,10 @@
           <td>+226 85 95 84 58</td>
           <td>
             <button
-              class="btn btn-warning"
+              class="btn btn-warning text-light"
               data-bs-target="#voir"
               data-bs-toggle="modal"
+              alt="infos du tuteur"
             >
               <i class="fa-solid fa-eye"></i>
             </button>
@@ -160,7 +161,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel1">Modal title</h5>
+            <h5 class="modal-title" id="staticBackdropLabel1">Modification d'infos</h5>
             <button
               type="button"
               class="btn-close"
@@ -168,17 +169,71 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">
+            <form action="controller/update.php" method="POST">
+            <div class="form-group mb-2">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="nom"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Nom"
+                  />
+                </div>
+                <div class="form-group mb-2">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="prenom"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Prenom"
+                  />
+                </div>
+                <div class="form-group mb-2">
+                  <input
+                    type="date"
+                    class="form-control"
+                    name="date_n"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Date de naissance"
+                  />
+                </div>
+
+                <div class="form-group mb-2">
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Email"
+                  />
+                </div>
+                <div class="form-group mb-2">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="telephone"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Telephone"
+                  />
+                </div>
+          </div>
           <div class="modal-footer">
             <button
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
             >
-              Close
+              fermé 
             </button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button type="submit" class="btn btn-primary">Understood</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
@@ -197,7 +252,9 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">
+              NOM DE L'ETUDIANT
+            </h5>
             <button
               type="button"
               class="btn-close"
@@ -205,7 +262,11 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">
+            <h5>TUTEUR: NOM DU TUTEUR</h5>
+            <h5>EMAIL:ilboudosouleymane4@gmail.com</h5>
+            <h5>TELEPHONE : +226 85 95 84 58</h5>
+          </div>
           <div class="modal-footer">
             <button
               type="button"
@@ -214,7 +275,6 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>

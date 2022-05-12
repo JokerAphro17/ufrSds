@@ -10,7 +10,7 @@
     <title>Gestionnaire UFR/SDS </title>
 </head>
 <body class="">
-<nav class="navbar row">
+<nav class="navbar row ">
       <div class="col-12">
         <a class="navbar-brand" href="#">
           <h1
@@ -18,7 +18,7 @@
             style="font-size: 3.5rem"
           >
             <img
-              src="assets/img/logo.png"
+              src="../assets/img/logo.png"
               alt=""
               style="height: 5rem"
               class="d-inline-block align-text-top "
@@ -27,8 +27,8 @@
         </a>
       </div>
     </nav>
-<section class="vh-100 ">
-  <div class="container  h-100">
+<section class="vh-80 ">
+  <div class="container">
     <div class="row d-flex justify-content-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-success text-white" style="border-radius: 1rem;">
@@ -36,8 +36,8 @@
 
             <div class=" ">
 
-              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-              <p class="text-white-50 ">Please enter your login and password!</p>
+              <h2 class="fw-bold mb-2 text-uppercase">Connxion</h2>
+              <p class="text-white-50 ">Entrer votre Email et votre mot de passe </p>
 
               <div class="form-outline form-white ">
                 <input type="email" id="typeEmailX" class="form-control form-control-lg" />
@@ -46,11 +46,11 @@
 
               <div class="form-outline form-white ">
                 <input type="password" id="typePasswordX" class="form-control form-control-lg mt-3" />
-                <label class="form-label" for="typePasswordX">Password</label>
+                <label class="form-label" for="typePasswordX">Mot de passe</label>
               </div>
 
 
-              <button class="btn btn-outline-light btn-lg " type="submit">Login</button>
+              <button class="btn btn-outline-light btn-lg " type="submit">Connecter-vous?</button>
 
         
 
