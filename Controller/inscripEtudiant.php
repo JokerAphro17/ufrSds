@@ -1,8 +1,19 @@
 <?php
-require_once './con_conf.php'; 
+include('./con_conf.php'); 
 if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POST['email'] != '' && $_POST['telephone'] != '')
     {
         if ($_POST['tuteur'] == 'non') {
+            //if numero or email exist 
+            $req = $bdd->prepare('SELECT * FROM Etudiant WHERE numero = :numero or email = :email');
+            $req->execute(array(
+                'numero' => $_POST['telephone'],
+                'email' => $_POST['email']
+            ));
+            $result = $req->fetch();
+            if ($result) {
+                $exist = "Ce compte existe déjà";
+                header('Location: ../view/enregistrement.php?error='.$exist);
+            } else {
             $req = $bdd->prepare('INSERT INTO Etudiant(nom, prenom, date_naiss, email, numero) VALUES(:nom, :prenom, :ddn, :email, :telephone)');
             $req->execute(array(
                 'nom' => $_POST['nom'],
@@ -12,21 +23,25 @@ if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POS
                 'telephone' => $_POST['telephone']
             ));
             $reuissie = 'Inscription réussie';
-            header('Location: ../view/enregistrement.php?success='.$reuissie);
-        } else {
+            header('Location: ../view/enregistrement.php?success='.$reuissie);}
+
+        } 
+        else {
             if( ($_POST['nomtuteur'] != '' && $_POST['prenomtuteur'] != '' && $_POST['emailtuteur'] != '' && $_POST['telephonetuteur'] != ''))
              {
                try { 
-                   $req1 = $bdd->prepare('INSERT INTO Etudiant (nom, prenom, date_naiss, email, numero, idTuteur) VALUES (:nom, :prenom, :ddn, :email, :telephone, :idTuteur)');
-                    $req1->execute(array(
-                    'nom' => $_POST['nom'],
-                    'prenom' => $_POST['prenom'],
-                    'ddn' => $_POST['ddn'],
+                
+                //if email or numero etudiant exist
+                $req = $bdd->prepare('SELECT * FROM Etudiant WHERE email = :email or numero = :numero');
+                $req->execute(array(
                     'email' => $_POST['email'],
-                    'telephone' => $_POST['telephone'],
-                    'idTuteur' => $_POST['telephonetuteur']
+                    'numero' => $_POST['telephone']
                 ));
-                $req1->closeCursor();
+                $result = $req->fetch();
+                if ($result) {
+                    $exist = "Ce compte existe déjà";
+                    header('Location: ../view/enregistrement.php?error='.$exist);
+                } else {
                 $req2 = $bdd->prepare('INSERT INTO Tuteur(nom, prenom, numero, email) VALUES(:nom, :prenom, :numero, :email)');
                 $req2->execute(array(
                     'nom' => $_POST['nomtuteur'],
@@ -34,25 +49,32 @@ if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POS
                     'numero' => $_POST['telephonetuteur'],
                     'email' => $_POST['emailtuteur']
                 ));
-                $reuissie = 'ok';
+                $req1 = $bdd->prepare('INSERT INTO Etudiant (nom, prenom, date_naiss, email, numero, idTuteur) VALUES (:nom, :prenom, :ddn, :email, :telephone, :idTuteur)');
+                $req1->execute(array(
+                'nom' => $_POST['nom'],
+                'prenom' => $_POST['prenom'],
+                'ddn' => $_POST['ddn'],
+                'email' => $_POST['email'],
+                'telephone' => $_POST['telephone'],
+                'idTuteur' => $_POST['telephonetuteur']
+            ));
+            
+                header('Location: ../view/enregistrement.php?success='.$reuissie);
+            }
                }
                 catch (Exception $e) {
-                    $erreur = 'Erreur : ' . $e->getMessage();
+                    echo 'Erreur: ', $e->getMessage();
                 }
                  
             }else{
-                $erreur = 'Veuillez remplir tous les champs';
+                $erreur="Veuillez remplir tous les champs du tuteur";
+                header('Location: ../view/enregistrement.php?error='.$erreur);
             }
-        }
-        if($reuissie == 'ok'){
-            header('Location: ../view/enregistrement.php?success='.$reuissie);
-        }else{
-            header('Location: ../view/enregistrement.php?error='.$erreur);
+        
         }
     }
 
-            
-
+    
 
                 
 

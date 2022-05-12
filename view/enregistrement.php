@@ -167,11 +167,16 @@
             </div>
           </div>
         </div>
-        <?php 
-        if(isset($_GET['erreur'])){
-          echo '<div class="alert alert-danger">'.$_GET['erreur'].'</div>';
-        }
-        ?>
+        <?php if (isset($_GET['error'])) {
+            echo '<div class="alert alert-danger"> 
+            <strong>Erreur!</strong> ' . $_GET['error'] . 
+            '</div>';
+            if (isset($_GET['success'])) {
+              echo '<div class="alert alert-success"> 
+              <strong>Succès!</strong> ' . $_GET['success'] . 
+              '</div>';
+            }
+          } ?>
       
         <div class="row justify-content-center">
           <div class="col-3">
@@ -265,35 +270,19 @@
     <!-- Modal -->
   </body>
   <script>
-    $(function () {
-      var availableTags = [
-        "ActionScript",
-        "AppleScript",
-        "Asp",
-        "BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "Java",
-        "JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme",
-      ];
-      $("#tags").autocomplete({
-        source: availableTags,
-      });
-    });
+    <?php 
+      include('../Controller/con_conf.php');
+      // select all the data from the table pdo 
+      $query = $bdd->query("SELECT * FROM Tuteur");
+      $data = $query->fetchAll();
+      // print the data in the modal
+      foreach ($data as $key => $value) {
+        echo '$("#tags").autocomplete({
+          source: ["' . $value['nom'] . '", "' . $value['prenom'] . $value['numero'] . '"]
+        });';
+      }
+    ?>
+
     $("#parain").hide();
     $("#radio1").click(function () {
       $("#parain").show();
