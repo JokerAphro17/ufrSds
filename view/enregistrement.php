@@ -171,12 +171,13 @@
             echo '<div class="alert alert-danger"> 
             <strong>Erreur!</strong> ' . $_GET['error'] . 
             '</div>';
+        }
             if (isset($_GET['success'])) {
               echo '<div class="alert alert-success"> 
               <strong>Succès!</strong> ' . $_GET['success'] . 
               '</div>';
             }
-          } ?>
+           ?>
         <div id="cache" class="">cache</div>
         <div class="row justify-content-center">
           <div class="col-3">
