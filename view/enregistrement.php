@@ -152,7 +152,7 @@
               class="form-control"
               id="tags"
               name="recherche"
-              aria-describedby="emailHelp"
+              
               placeholder="Entrer le nom du tuteur"
             />
           </div>
@@ -177,7 +177,7 @@
               '</div>';
             }
           } ?>
-      
+        <div id="cache" class="">cache</div>
         <div class="row justify-content-center">
           <div class="col-3">
             <button class="btn btn-primary">Enregistrer</button>
@@ -272,12 +272,13 @@
      $query = $bdd->query("SELECT * FROM Tuteur");
       $data = $query->fetchAll();
     ?>
+    
     <script>
       $( function() {
       var availableTags = [
       <?php 
       foreach ($data as $key => $value) {
-        echo '"'.$value['nom'].' '.$value['prenom'].''.$value['numero'].'",';
+        echo '"'.$value['nom'].' '.$value['prenom'].' '.$value['numero'].'",';
       }
       ?>
       ];
@@ -293,5 +294,10 @@
     $("#radio2").click(function () {
       $("#parain").hide();
     });
+
+      $("cache").click(function () {
+        $("ajout").hide();
+      });
+   
   </script>
 </html>

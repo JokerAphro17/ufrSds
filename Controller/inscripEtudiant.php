@@ -26,9 +26,9 @@ if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POS
 
         } 
         else {
-            if( ($_POST['nomtuteur'] != '' && $_POST['prenomtuteur'] != '' && $_POST['emailtuteur'] != '' && $_POST['telephonetuteur'] != ''))
+            if( ($_POST['nomtuteur'] != '' && $_POST['prenomtuteur'] != '' && $_POST['emailtuteur'] != '' && $_POST['telephonetuteur'] != '' &&  $_POST['recherche']==''))
              {
-               try { 
+               if ($_POST['recherche'] == '') { 
                 
                 //if email or numero etudiant exist
                 $req = $bdd->prepare('SELECT * FROM Etudiant WHERE email = :email or numero = :numero');
@@ -57,13 +57,32 @@ if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POS
                 'telephone' => $_POST['telephone'],
                 'idTuteur' => $_POST['telephonetuteur']
             ));
-            
+                $reuissie = 'Inscription réussie';
                 header('Location: ../view/enregistrement.php?success='.$reuissie);
             }
                }
-                catch (Exception $e) {
-                    echo 'Erreur: ', $e->getMessage();
-                }
+              else{
+                  
+                  $numeroTuteur=explode (" ",$_POST['recherche']);
+                    $req = $bdd->prepare('SELECT * FROM Tuteur WHERE numero = :numero');
+                    $req->execute(array(
+                        'numero' => $numeroTuteur[2]
+                    ));
+                    $result = $req->fetch();
+                    if ($result) {
+                        // insert into etudiant
+                        $req1 = $bdd->prepare('INSERT INTO Etudiant (nom, prenom, date_naiss, email, numero, idTuteur) VALUES (:nom, :prenom, :ddn, :email, :telephone, :idTuteur)');
+                        $req1->execute(array(
+                        'nom' => $_POST['nom'],
+                        'prenom' => $_POST['prenom'],
+                        'ddn' => $_POST['ddn'],
+                        'email' => $_POST['email'],
+                        'telephone' => $_POST['telephone'],
+                        'idTuteur' => $numeroTuteur[2]
+                    ));
+
+                    } else {
+              }
                  
             }else{
                 $erreur="Veuillez remplir tous les champs du tuteur";
@@ -72,11 +91,7 @@ if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POS
         
         }
     }
-
-    
-
-                
-
-
+    $num = explode(" ", $_POST['recherche']);
+                echo $num[2];
 
 ?>
