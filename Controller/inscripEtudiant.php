@@ -28,7 +28,6 @@ if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POS
         else {
             if( ($_POST['nomtuteur'] != '' && $_POST['prenomtuteur'] != '' && $_POST['emailtuteur'] != '' && $_POST['telephonetuteur'] != ''))
              {   if ($_POST['recherche'] == '') {
-                //if email or numero etudiant exist
                 $req = $bdd->prepare('SELECT * FROM Etudiant WHERE email = :email or numero = :numero');
                 $req->execute(array(
                     'email' => $_POST['email'],

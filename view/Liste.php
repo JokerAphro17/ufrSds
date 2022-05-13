@@ -63,37 +63,51 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Ilboudo</td>
-          <td>Omar</td>
-          <td>01/01/2000</td>
-          <td>ilbouoomar27@gmail.com</td>
-          <td>+226 85 95 84 58</td>
-          <td>
-            <button
-              class="btn btn-warning text-light"
-              data-bs-target="#voir"
-              data-bs-toggle="modal"
-              alt="infos du tuteur"
+        
+          <?php 
+          include ('../Controller/con_conf.php');
+          $req = $bdd->query('SELECT * FROM Etudiant');
+          $i=1;
+          $nb_rows = $req->rowCount();
+          while($result = $req->fetch()){
+            echo "<tr>";
+            echo "<td>".$result['nom']."</td>";
+            echo "<td>".$result['prenom']."</td>";
+            echo "<td>".$result['date_naiss']."</td>";
+            echo "<td>".$result['email']."</td>";
+            echo "<td>".$result['numero']."</td>";
+            echo "<td>";
+            echo " <button
+              class='btn btn-warning text-light'
+              data-bs-target='#voir'
+              data-bs-toggle='modal'
+              alt='infos du tuteur'
             >
-              <i class="fa-solid fa-eye"></i>
+              <i class='fa-solid fa-eye'></i>
             </button>
             <button
-              class="btn btn-success"
-              data-bs-target="#modification"
-              data-bs-toggle="modal"
+              class='btn btn-success'
+              data-bs-target='#modification'
+              data-bs-toggle='modal'
             >
-              <i class="fa-solid fa-edit"></i>
-            </button>
+              <i class='fa-solid fa-edit'></i>
+            </button> 
+            
             <button
-              class="btn btn-danger"
-              data-bs-toggle="modal"
-              data-bs-target="#supprimer"
+              class='btn btn-danger'
+              data-bs-toggle='modal'
+              data-bs-target='#supprimer$i'
             >
-              <i class="fa-solid fa-trash"></i>
+              <i class='fa-solid fa-trash'>
+                
+              </i>
             </button>
-          </td>
-        </tr>
+          </td>";
+        $i++;}
+          $req->closeCursor();
+          
+          ?>
+       </tr>
       </tbody>
       <tfoot>
         <tr>
@@ -103,46 +117,53 @@
           <th>Email</th>
           <th>Telephone</th>
           <th>Action</th>
-        </tr>
-      </tfoot>
+          </tr>
+        </tfoot>
     </table>
     <!-- Button trigger modal -->
 
     <!-- Modal  suppresion-->
+    <?php $i=1;
+              $req = $bdd->query('SELECT * FROM Etudiant');
+
+              $req2 = $bdd->query('SELECT * FROM Tuteur');
+              
+    while($result = $req->fetch()){
+     echo"
     <div
-      class="modal fade"
-      id="supprimer"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
+      class='modal fade'
+      id='supprimer$i'
+      data-bs-backdrop='static'
+      data-bs-keyboard='false'
+      tabindex='-1'
+      aria-labelledby='staticBackdropLabel'
+      aria-hidden='true'
     >
-      <div class="modal-dialog">
-        <div class="modal-content border border-3 border-danger">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
-              SUPPRESSION [ NOM DE L'ETUDIANT]
+    <div class='modal-dialog'>
+        <div class='modal-content border border-3 border-danger'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='staticBackdropLabel'>
+              SUPPRESSION [$result[nom] $result[prenom]]
             </h5>
             <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
+              type='button'
+              class='btn-close'
+              data-bs-dismiss='modal'
+              aria-label='Close'
             ></button>
           </div>
-          <div class="modal-body">
+          <div class='modal-body'>
             Voulez-vous vraiment supprimer cet etudiant ?
           </div>
-          <div class="modal-footer">
+          <div class='modal-footer'>
             <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
+              type='button'
+              class='btn btn-secondary'
+              data-bs-dismiss='modal'
             >
               Annuler
             </button>
-            <button type="button" class="btn btn-danger">Supprimer</button>
+            <a href='../Controller/controlList.php?id=$result[numero]' class='btn btn-danger'>Supprimer</a>
           </div>
         </div>
       </div>
@@ -150,135 +171,149 @@
     <!--fin  Modal  suppresion-->
     <!-- Modal modification -->
     <div
-      class="modal fade"
-      id="modification"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
+      class='modal fade'
+      id='modification'
+      data-bs-backdrop='static'
+      data-bs-keyboard='false'
+      tabindex='-1'
+      aria-labelledby='staticBackdropLabel'
+      aria-hidden='true'
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel1">Modification d'infos</h5>
+      <div class='modal-dialog'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='staticBackdropLabel1'>Modification d\'infos</h5>
             <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
+              type='button'
+              class='btn-close'
+              data-bs-dismiss='modal'
+              aria-label='Close'
             ></button>
           </div>
-          <div class="modal-body">
-            <form action="controller/update.php" method="POST">
-            <div class="form-group mb-2">
+          <div class='modal-body'>
+            <form action='controller/update.php' method='POST'>
+            <div class='form-group mb-2'>
                   <input
-                    type="text"
-                    class="form-control"
-                    name="nom"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Nom"
+                    type='text'
+                    class='form-control'
+                    name='nom'
+                    id='exampleInputEmail1'
+                    aria-describedby='emailHelp'
+                    placeholder='Nom'
                   />
                 </div>
-                <div class="form-group mb-2">
+                <div class='form-group mb-2'>
                   <input
-                    type="text"
-                    class="form-control"
-                    name="prenom"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Prenom"
+                    type='text'
+                    class='form-control'
+                    name='prenom'
+                    id='exampleInputEmail1'
+                    aria-describedby='emailHelp'
+                    placeholder='Prenom'
                   />
                 </div>
-                <div class="form-group mb-2">
+                <div class='form-group mb-2'>
                   <input
-                    type="date"
-                    class="form-control"
-                    name="date_n"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Date de naissance"
+                    type='date'
+                    class='form-control'
+                    name='date_n'
+                    id='exampleInputEmail1'
+                    aria-describedby='emailHelp'
+                    placeholder='Date de naissance'
                   />
                 </div>
 
-                <div class="form-group mb-2">
+                <div class='form-group mb-2'>
                   <input
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Email"
+                    type='email'
+                    class='form-control'
+                    name='email'
+                    id='exampleInputEmail1'
+                    aria-describedby='emailHelp'
+                    placeholder='Email'
                   />
                 </div>
-                <div class="form-group mb-2">
+                <div class='form-group mb-2'>
                   <input
-                    type="text"
-                    class="form-control"
-                    name="telephone"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Telephone"
+                    type='text'
+                    class='form-control'
+                    name='telephone'
+                    id='exampleInputEmail1'
+                    aria-describedby='emailHelp'
+                    placeholder='Telephone'
                   />
                 </div>
           </div>
-          <div class="modal-footer">
+          <div class='modal-footer'>
             <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
+              type='button'
+              class='btn btn-secondary'
+              data-bs-dismiss='modal'
             >
               fermé 
             </button>
-            <button type="submit" class="btn btn-primary">Understood</button>
+            <button type='submit' class='btn btn-primary'>Enregistrer</button>
           </div>
           </form>
         </div>
       </div>
-    </div>
+    </div>  
     <!--fin  Modal modification-->
     <!-- Modal voir -->
     <!-- Button trigger modal -->
 
     <!-- Modal -->
     <div
-      class="modal fade"
-      id="voir"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
+      class='modal fade'
+      id='voir'
+      tabindex='-1'
+      aria-labelledby='exampleModalLabel'
+      aria-hidden='true'
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              NOM DE L'ETUDIANT
+      <div class='modal-dialog'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLabel'>
+              $result[nom] $result[prenom]
             </h5>
             <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
+              type='button'
+              class='btn-close'
+              data-bs-dismiss='modal'
+              aria-label='Close'
             ></button>
           </div>
-          <div class="modal-body">
-            <h5>TUTEUR: NOM DU TUTEUR</h5>
-            <h5>EMAIL:ilboudosouleymane4@gmail.com</h5>
-            <h5>TELEPHONE : +226 85 95 84 58</h5>
-          </div>
-          <div class="modal-footer">
+          <div class='modal-body'>";
+          while($result2 = $req2->fetch()){
+            if ($result['idTuteur']==$result2['numero'])
+            echo"
+            <h5>TUTEUR: $result2[nom] $result2[prenom]</h5>
+            <h5>email:$result2[email]</h5>
+            <h5>TELEPHONE : $result2[numero]</h5>
+          </div>";
+          else echo' h3>Aucun tuteur</h3>';
+          }
+          $req2->closeCursor();
+          echo "
+          <div class='modal-footer'>
             <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
+              type='button'
+              class='btn btn-secondary'
+              data-bs-dismiss='modal'
             >
               Close
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </div>";
+    $i++;
+    }
+    ?>  
+
+
+
+    
     <!--fin  Modal voir-->
   </body>
   <script>
