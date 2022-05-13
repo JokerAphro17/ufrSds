@@ -252,7 +252,6 @@
                   type="button"
                   class="btn btn-danger"
                   data-bs-dismiss="modal"
-                  
                 >
                   Fermer
                 </button>
@@ -266,22 +265,26 @@
       </form>
     </div>
     <!-- Button trigger modal -->
-
     <!-- Modal -->
   </body>
-  <script>
-    <?php 
-      include('../Controller/con_conf.php');
-      // select all the data from the table pdo 
-      $query = $bdd->query("SELECT * FROM Tuteur");
+    <?php  
+     include('../Controller/con_conf.php');
+     $query = $bdd->query("SELECT * FROM Tuteur");
       $data = $query->fetchAll();
-      // print the data in the modal
-      foreach ($data as $key => $value) {
-        echo '$("#tags").autocomplete({
-          source: ["' . $value['nom'] . '", "' . $value['prenom'] . $value['numero'] . '"]
-        });';
-      }
     ?>
+    <script>
+      $( function() {
+      var availableTags = [
+      <?php 
+      foreach ($data as $key => $value) {
+        echo '"'.$value['nom'].' '.$value['prenom'].''.$value['numero'].'",';
+      }
+      ?>
+      ];
+      $( "#tags" ).autocomplete({
+        source: availableTags
+      });
+      } );
 
     $("#parain").hide();
     $("#radio1").click(function () {

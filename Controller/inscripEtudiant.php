@@ -3,7 +3,6 @@ include('./con_conf.php');
 if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POST['email'] != '' && $_POST['telephone'] != '')
     {
         if ($_POST['tuteur'] == 'non') {
-            //if numero or email exist 
             $req = $bdd->prepare('SELECT * FROM Etudiant WHERE numero = :numero or email = :email');
             $req->execute(array(
                 'numero' => $_POST['telephone'],
