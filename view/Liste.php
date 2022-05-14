@@ -37,12 +37,22 @@
         </a>
       </div>
     </nav>
+    <?php if (isset($_GET['succes'])) { 
+      echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+      <strong>Succès!</strong> $_GET[succes]
+      <button type='button' class='close' data-dismiss='alert'  aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button>
+    </div> 
+      ";
+    }
+    ?>
     <div class="row justify-content-between">
       <div class="col-md-4">
         <h1>Liste des Etudiants</h1>
       </div>
       <div class="col-md-2">
-        <a class="btn btn-primary" href="inscription.html">
+        <a class="btn btn-primary" href="enregistrement.php">
           <i class="fas fa-plus"></i> Ajouter
         </a>
       </div>
@@ -77,34 +87,30 @@
             echo "<td>".$result['email']."</td>";
             echo "<td>".$result['numero']."</td>";
             echo "<td>";
-            echo " <button
+            echo " <a href='../view/info.php?id=$result[numero]'
               class='btn btn-warning text-light'
-              data-bs-target='#voir'
-              data-bs-toggle='modal'
+              
               alt='infos du tuteur'
             >
               <i class='fa-solid fa-eye'></i>
-            </button>
-            <button
+            </a>
+            <a href='../Controller/update.php?id=$result[numero]'
               class='btn btn-success'
-              data-bs-target='#modification'
-              data-bs-toggle='modal'
+            
             >
               <i class='fa-solid fa-edit'></i>
-            </button> 
+            </a> 
             
-            <button
-              class='btn btn-danger'
-              data-bs-toggle='modal'
-              data-bs-target='#supprimer$i'
+            <a id=sup$i href='../Controller/delete.php?id=$result[numero]'
+              class=' btn btn-danger'
+
             >
               <i class='fa-solid fa-trash'>
-                
               </i>
-            </button>
+            </a>
           </td>";
         $i++;}
-          $req->closeCursor();
+         $req->closeCursor();
           
           ?>
        </tr>
@@ -123,200 +129,27 @@
     <!-- Button trigger modal -->
 
     <!-- Modal  suppresion-->
-    <?php $i=1;
-              $req = $bdd->query('SELECT * FROM Etudiant');
-
-              $req2 = $bdd->query('SELECT * FROM Tuteur');
-              
-    while($result = $req->fetch()){
-     echo"
-    <div
-      class='modal fade'
-      id='supprimer$i'
-      data-bs-backdrop='static'
-      data-bs-keyboard='false'
-      tabindex='-1'
-      aria-labelledby='staticBackdropLabel'
-      aria-hidden='true'
-    >
-    <div class='modal-dialog'>
-        <div class='modal-content border border-3 border-danger'>
-          <div class='modal-header'>
-            <h5 class='modal-title' id='staticBackdropLabel'>
-              SUPPRESSION [$result[nom] $result[prenom]]
-            </h5>
-            <button
-              type='button'
-              class='btn-close'
-              data-bs-dismiss='modal'
-              aria-label='Close'
-            ></button>
-          </div>
-          <div class='modal-body'>
-            Voulez-vous vraiment supprimer cet etudiant ?
-          </div>
-          <div class='modal-footer'>
-            <button
-              type='button'
-              class='btn btn-secondary'
-              data-bs-dismiss='modal'
-            >
-              Annuler
-            </button>
-            <a href='../Controller/controlList.php?id=$result[numero]' class='btn btn-danger'>Supprimer</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--fin  Modal  suppresion-->
-    <!-- Modal modification -->
-    <div
-      class='modal fade'
-      id='modification'
-      data-bs-backdrop='static'
-      data-bs-keyboard='false'
-      tabindex='-1'
-      aria-labelledby='staticBackdropLabel'
-      aria-hidden='true'
-    >
-      <div class='modal-dialog'>
-        <div class='modal-content'>
-          <div class='modal-header'>
-            <h5 class='modal-title' id='staticBackdropLabel1'>Modification d\'infos</h5>
-            <button
-              type='button'
-              class='btn-close'
-              data-bs-dismiss='modal'
-              aria-label='Close'
-            ></button>
-          </div>
-          <div class='modal-body'>
-            <form action='controller/update.php' method='POST'>
-            <div class='form-group mb-2'>
-                  <input
-                    type='text'
-                    class='form-control'
-                    name='nom'
-                    id='exampleInputEmail1'
-                    aria-describedby='emailHelp'
-                    placeholder='Nom'
-                  />
-                </div>
-                <div class='form-group mb-2'>
-                  <input
-                    type='text'
-                    class='form-control'
-                    name='prenom'
-                    id='exampleInputEmail1'
-                    aria-describedby='emailHelp'
-                    placeholder='Prenom'
-                  />
-                </div>
-                <div class='form-group mb-2'>
-                  <input
-                    type='date'
-                    class='form-control'
-                    name='date_n'
-                    id='exampleInputEmail1'
-                    aria-describedby='emailHelp'
-                    placeholder='Date de naissance'
-                  />
-                </div>
-
-                <div class='form-group mb-2'>
-                  <input
-                    type='email'
-                    class='form-control'
-                    name='email'
-                    id='exampleInputEmail1'
-                    aria-describedby='emailHelp'
-                    placeholder='Email'
-                  />
-                </div>
-                <div class='form-group mb-2'>
-                  <input
-                    type='text'
-                    class='form-control'
-                    name='telephone'
-                    id='exampleInputEmail1'
-                    aria-describedby='emailHelp'
-                    placeholder='Telephone'
-                  />
-                </div>
-          </div>
-          <div class='modal-footer'>
-            <button
-              type='button'
-              class='btn btn-secondary'
-              data-bs-dismiss='modal'
-            >
-              fermé 
-            </button>
-            <button type='submit' class='btn btn-primary'>Enregistrer</button>
-          </div>
-          </form>
-        </div>
-      </div>
-    </div>  
-    <!--fin  Modal modification-->
-    <!-- Modal voir -->
-    <!-- Button trigger modal -->
-
-    <!-- Modal -->
-    <div
-      class='modal fade'
-      id='voir'
-      tabindex='-1'
-      aria-labelledby='exampleModalLabel'
-      aria-hidden='true'
-    >
-      <div class='modal-dialog'>
-        <div class='modal-content'>
-          <div class='modal-header'>
-            <h5 class='modal-title' id='exampleModalLabel'>
-              $result[nom] $result[prenom]
-            </h5>
-            <button
-              type='button'
-              class='btn-close'
-              data-bs-dismiss='modal'
-              aria-label='Close'
-            ></button>
-          </div>
-          <div class='modal-body'>";
-          while($result2 = $req2->fetch()){
-            if ($result['idTuteur']==$result2['numero'])
-            echo"
-            <h5>TUTEUR: $result2[nom] $result2[prenom]</h5>
-            <h5>email:$result2[email]</h5>
-            <h5>TELEPHONE : $result2[numero]</h5>
-          </div>";
-          else echo' h3>Aucun tuteur</h3>';
-          }
-          $req2->closeCursor();
-          echo "
-          <div class='modal-footer'>
-            <button
-              type='button'
-              class='btn btn-secondary'
-              data-bs-dismiss='modal'
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>";
-    $i++;
-    }
-    ?>  
-
-
-
+    
     
     <!--fin  Modal voir-->
   </body>
   <script>
+    <?php 
+    $a=1;
+    for($a=1; $a<$i; $a++){
+      echo "
+    $('#sup$a').on('click', function(e) {
+      e.preventDefault();
+      var $"."this = $(this);
+      var url = $"."this.attr('href');
+      var choice = confirm('Voulez-vous vraiment supprimer cet Etudiant?');
+      if (choice) {
+        window.location.href = url;
+      }
+    });
+    ";
+  }
+    ?>
     $(document).ready(function () {
       $("#myTable").DataTable();
     });
