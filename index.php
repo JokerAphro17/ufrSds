@@ -1,3 +1,17 @@
+<?php 
+  include("Controller/con_conf.php");
+  // count data in Admin table
+  $sql = "SELECT * FROM Admin";
+  $stmt = $bdd->prepare($sql);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+  $count = count($result);
+  if (!$count == 0) {
+    header('Location: view/login.php');
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

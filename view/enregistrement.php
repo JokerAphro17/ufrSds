@@ -1,3 +1,10 @@
+<?php 
+  session_start();
+  if(!isset($_SESSION['verify'])){
+    header('Location: ../view/login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,11 +34,11 @@
     <title>Gestionnaire UFR/SDS</title>
   </head>
   <body class="container">
-    <nav class="navbar row">
-      <div class="col-12">
-        <a class="navbar-brand" href="#">
-          <h1
-            class="text-center text-success bg-light"
+    <nav class="navbar row text-center bg-light h-10 mb-4">
+      <div class="col-10">
+        <a class="navbar-brand d-inline" href="#">
+          <h1 
+            class=" text-success bg-light "
             style="font-size: 3.5rem"
           >
             <img
@@ -40,7 +47,13 @@
               style="height: 5rem"
               class="d-inline-block align-text-top"
             />Gestionnaire UFR/SDS
+
           </h1>
+        </a>
+      </div>
+      <div class="col-1 bg-light">
+        <a href="../Controller/logout.php" class="btn btn-danger">
+          <i class="fas fa-sign-out-alt"></i>
         </a>
       </div>
     </nav>

@@ -8,7 +8,9 @@
     ));
     $result = $req->fetch();
     if ($result) {
-        header('Location: controlListe.php');
+      session_start();
+      $_SESSION['verify'] = true;
+        header('Location: ../view/Liste.php');
     } else {
         $erreur = 'Mauvais identifiant ou mot de passe !';
         header('Location: ../view/login.php?error='.$erreur);
