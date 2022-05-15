@@ -51,13 +51,9 @@
       </div>
     </nav>
     <?php if (isset($_GET['succes'])) { 
-      echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-      <strong>Succès!</strong> $_GET[succes]
-      <button type='button' class='close' data-dismiss='alert'  aria-label='Close'>
-        <span aria-hidden='true'>&times;</span>
-      </button>
-    </div> 
-      ";
+      echo "<div id = 'alert' class='alert alert-success text-center'>
+      <strong>Succes!</strong> $_GET[succes]
+      </div>";
     }
     ?>
     <div class="row justify-content-between">
@@ -166,5 +162,6 @@
     $(document).ready(function () {
       $("#myTable").DataTable();
     });
+    $('#alert').delay(2000).fadeOut('slow');  
   </script>
 </html>

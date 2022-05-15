@@ -13,7 +13,7 @@
         $stmt->bindParam(':telephone', $_POST['numero']);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        $succes = "L'utilisateur a été modifié avec succès";
+        $succes = "Les donnés de l'etudiant ont été modifié avec succès";
         header('location: ../view/Liste.php?succes='.$succes);
 
     }

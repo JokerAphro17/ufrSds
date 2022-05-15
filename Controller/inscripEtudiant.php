@@ -1,5 +1,6 @@
 <?php
 include('./con_conf.php'); 
+$reussie = "L'etudiant a été ajouté avec succès";
 if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POST['email'] != '' && $_POST['telephone'] != '')
     {
         if ($_POST['tuteur'] == 'non') {
@@ -21,7 +22,6 @@ if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POS
                 'email' => $_POST['email'],
                 'telephone' => $_POST['telephone']
             ));
-            $reuissie = 'Inscription réussie';
             header('Location: ../view/enregistrement.php?success='.$reuissie);}
 
         } 
@@ -54,7 +54,6 @@ if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POS
                 'telephone' => $_POST['telephone'],
                 'idTuteur' => $_POST['telephonetuteur']
             ));
-                $reuissie = 'Inscription réussie';
                 header('Location: ../view/enregistrement.php?success='.$reuissie);
             }
                }
@@ -77,7 +76,6 @@ if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POS
                         'telephone' => $_POST['telephone'],
                         'idTuteur' => $numeroTuteur[2]
                     ));
-                        $reuissie = 'Inscription réussie';
                         header('Location: ../view/enregistrement.php?success='.$reuissie);
                     } else {
                         $erreur = 'Tuteur non trouvé';
@@ -105,7 +103,7 @@ if($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['ddn'] != '' && $_POS
                       'telephone' => $_POST['telephone'],
                       'idTuteur' => $numeroTuteur[2]
                   ));
-                      $reuissie = 'Inscription réussie';
+                      
                       header('Location: ../view/enregistrement.php?success='.$reuissie);
                   } else {
                       $erreur = 'Tuteur non trouvé';

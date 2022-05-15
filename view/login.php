@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../assets/bootstrap5/css/bootstrap.min.css">
     <script src="../assets/bootstrap5/js/bootstrap.min.js" defer></script>
+    <script src="../assets/jquery-3.6.0.min.js"></script>
+
     <title>Gestionnaire UFR/SDS </title>
 </head>
 <body class="">
@@ -51,7 +53,7 @@
 
                 <?php 
                   if(isset($_GET['error'])){
-                    echo '<div class="alert alert-danger" role="alert">
+                    echo '<div  id="ale" class="alert alert-danger" role="alert">
                       <strong>Erreur!</strong>'.$_GET['error'].'
                     </div>';
                   }
@@ -69,5 +71,11 @@
   </div>
 </section>
 </body>
-
+<script>
+  $(document).ready(function(){
+    $("#ale").fadeTo(2000, 500).slideUp(500, function(){
+      $("#ale").slideUp(500);
+    });
+  });
+</script>
 </html>

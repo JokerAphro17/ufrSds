@@ -54,7 +54,6 @@
 <?php 
  include "../Controller/con_conf.php";
     $id = $_GET['id'];
-    // use PDO to select inner join on table etudiant and table ufr
     $sql = "SELECT * FROM Etudiant INNER JOIN Tuteur ON Etudiant.idTuteur = Tuteur.numero WHERE Etudiant.numero = ?";
     $stmt = $bdd->prepare($sql);
     $stmt->execute([$id]);
