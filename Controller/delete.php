@@ -9,6 +9,5 @@
         $stmt->execute();
         $succes = "L'utilisateur a été supprimé avec succès";
         header('location: ../view/Liste.php?succes='.$succes);
-
     }
 ?>

@@ -1,3 +1,18 @@
+<?php 
+  include("../Controller/con_conf.php");
+  // count data in Admin table
+  $sql = "SELECT * FROM Admin";
+  $stmt = $bdd->prepare($sql);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+  $count = count($result);
+  if ($count == 0) {
+    header('Location: ../index.php');
+  }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +44,13 @@
         </a>
       </div>
     </nav>
+    <?php
+      if (isset($_GET['success'])) {
+        echo ' <div id="ale" class="alert alert-success text-center" role="alert">
+        <strong>Success!</strong> Votre compte a été créé avec succès.
+      </div>';
+      }
+    ?>
 <section class="vh-80 ">
   <div class="container">
     <div class="row d-flex justify-content-center h-100">
@@ -73,8 +95,8 @@
 </body>
 <script>
   $(document).ready(function(){
-    $("#ale").fadeTo(2000, 500).slideUp(500, function(){
-      $("#ale").slideUp(500);
+    $("#ale").fadeTo(3000, 500).slideUp(1000, function(){
+      $("#ale").slideUp(1000);
     });
   });
 </script>

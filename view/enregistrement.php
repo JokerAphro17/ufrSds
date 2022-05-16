@@ -191,7 +191,6 @@
               '</div>';
             }
            ?>
-        <div id="cache" class="">cache</div>
         <div class="row justify-content-center">
           <div class="col-3">
             <button class="btn btn-primary">Enregistrer</button>
